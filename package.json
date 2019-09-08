@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
+    "start": "NODE_ENV=production && node ./src/server.js",
     "watch": "nodemon ./src/server.js"
   },
   "devDependencies": {
