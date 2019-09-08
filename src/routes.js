@@ -14,7 +14,13 @@ var storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 const UploadController = require('./app/controllers/UploadController');
 
-routes.post('/results', upload.single('list'), UploadController.getAttendes);
+routes.post('/results', upload.single('list'), (req, res) => {
+  if (req.file === undefined) {
+    res.status(400).json({ error: 'No file was provided' });
+  } else {
+    UploadController.getAttendes(req, res);
+  }
+});
 routes.get('/', (req, res) => {
   res.render('home');
 });

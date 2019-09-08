@@ -1,11 +1,12 @@
-const path = require('path');
+const fs = require('fs');
+
 const { txtToJson, stringToTxt } = require('../utils/fileConversion');
 const { getDistance } = require('../utils/geolocation');
 
 class UploadController {
   async getAttendes(req, res) {
+    const txtFile = req.file.path;
     try {
-      const txtFile = req.file.path;
       const outputFilename = `attendes_${Date.now()}`;
       const customerList = await txtToJson(txtFile);
 
@@ -21,12 +22,18 @@ class UploadController {
         await stringToTxt(outputFilename, listContent);
       }
 
-      res.render('list', {
-        attendees: attendeesList,
-        fileUrl: attendeesList.length > 0 ? `${outputFilename}.txt` : null
-      });
+      fs.unlinkSync(txtFile);
+
+      res
+        .status(200)
+        .json({
+          attendees: attendeesList,
+          fileUrl: attendeesList.length > 0 ? `${outputFilename}.txt` : null
+        })
+        .send();
     } catch (err) {
-      res.render('list', err);
+      fs.unlinkSync(txtFile);
+      res.status(400).json(err);
     }
   }
 }
