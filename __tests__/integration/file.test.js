@@ -1,5 +1,6 @@
-const { txtToJson } = require('../../app/file');
 const path = require('path');
+const { txtToJson } = require('../../src/app/utils/fileConversion');
+
 const testFilesPath = path.join(path.dirname(__dirname), 'test_files');
 
 describe('file', () => {

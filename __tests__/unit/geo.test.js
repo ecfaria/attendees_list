@@ -1,4 +1,4 @@
-const { getDistance } = require('../../app/geo');
+const { getDistance } = require('../../src/app/utils/geolocation');
 
 describe('geolocation', () => {
   it('should return 0 if is the same location', () => {
