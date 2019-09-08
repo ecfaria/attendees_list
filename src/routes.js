@@ -7,13 +7,16 @@ var storage = multer.diskStorage({
     cb(null, 'uploads/');
   },
   filename: function(req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
+    cb(null, `${Date.now()}_${file.originalname}`);
   }
 });
 
 const upload = multer({ storage: storage });
 const UploadController = require('./app/controllers/UploadController');
 
-routes.post('/', upload.single('list'), UploadController.getAttendes);
+routes.post('/results', upload.single('list'), UploadController.getAttendes);
+routes.get('/', (req, res) => {
+  res.render('home');
+});
 
 module.exports = routes;

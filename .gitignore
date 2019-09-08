@@ -57,6 +57,7 @@ typings/
 # next.js build output
 .next
 
-# upload folder
+# upload and download folder
 uploads
+downloads
 

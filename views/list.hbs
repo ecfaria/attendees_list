@@ -1,0 +1,21 @@
+{{#if error}}
+<div class="alert alert-danger" role="alert">
+  {{error}}
+</div>
+{{/if}}
+
+{{#unless error}}
+{{#if attendees}}
+<ul>
+  {{#each attendees}}
+  <li>{{user_id}} - {{name}}</li>
+  {{/each}}
+</ul>
+{{else}}
+<p>There are no possible attendees on the list</p>
+{{/if}}
+{{/unless}}
+<div>
+  {{#if fileUrl}}<a href="{{fileUrl}}">Download list</a> | {{/if}}
+  <a href="/">Send a new file</a>
+</div>

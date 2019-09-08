@@ -28,9 +28,9 @@ const txtToJson = async file => {
   });
 };
 
-const jsonToTxt = (filename, data) => {
+const stringToTxt = (filename, data, directory = process.env.OUTPUT_DIR) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile(`${filename}.txt`, JSON.stringify(data), err => {
+    fs.writeFile(`${directory}/${filename}.txt`, data, err => {
       if (err) reject({ error: 'There was an error writing to file' });
       resolve({ message: 'Your file has been saved succesfully' });
     });
@@ -39,5 +39,5 @@ const jsonToTxt = (filename, data) => {
 
 module.exports = {
   txtToJson,
-  jsonToTxt
+  stringToTxt
 };
