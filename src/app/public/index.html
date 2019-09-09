@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Attendees List</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      .content {
+        min-height: 100vh;
+        padding-bottom: 30px;
+      }
+
+      #list {
+        margin-top: 20px;
+      }
+
+      li {
+        width: 100%;
+        border-top: 1px solid grey;
+        padding: 20px 0;
+      }
+
+      li:first-of-type {
+        border-top: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="content d-flex flex-column justify-content-center">
+        <h1>Attendees List</h1>
+        <div class="form">
+          <p>Select the file you want to process and click on "Send file"</p>
+          <form id="send-list">
+            <div class="form-group">
+              <label for="list"></label>
+              <input
+                type="file"
+                name="list"
+                id="list-file"
+                class="form-control"
+                accept=".txt"
+              />
+            </div>
+            <button id="send-button" class="btn btn-primary">Send file</button>
+          </form>
+        </div>
+        <div id="list">
+          <ul id="attendees-list"></ul>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

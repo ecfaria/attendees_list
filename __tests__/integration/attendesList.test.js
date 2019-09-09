@@ -1,6 +1,7 @@
 const request = require('supertest');
 const app = require('../../src/app');
 const fs = require('fs');
+const rimraf = require('rimraf');
 
 const testFilesPath = `${__dirname}/test_files`;
 

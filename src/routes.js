@@ -22,7 +22,7 @@ routes.post('/results', upload.single('list'), (req, res) => {
   }
 });
 routes.get('/', (req, res) => {
-  res.render('home');
+  res.sendFile(path.join(__dirname, '/app/public/index.html'));
 });
 
 module.exports = routes;
