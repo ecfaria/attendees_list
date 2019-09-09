@@ -58,6 +58,6 @@ typings/
 .next
 
 # upload and download folder
-uploads
-downloads
+uploads/*
+downloads/*
 
